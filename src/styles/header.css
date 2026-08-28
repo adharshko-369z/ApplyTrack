@@ -1,0 +1,11 @@
+.logo{
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    background-color: #FFFFFF;
+}
+
+.logo > span{
+    font-size: 1.125rem;
+    font-weight: bold;
+}
