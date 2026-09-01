@@ -17,7 +17,7 @@
     width: 80%;
 }
 
-.home-page > button{
+.home-page > .route-links-to-btns{
     font-family: sans-serif;
     font-size: 1rem;
     font-weight: 600;
@@ -28,9 +28,11 @@
     color: #FFFFFF;
     border: 1px solid #2E5EAA;
     border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
 }
 
-.home-page > button:hover,
-.home-page > button:active{
+.home-page > .route-links-to-btns:hover,
+.home-page > .route-links-to-btns:active{
     background-color: #254C87;
 }
