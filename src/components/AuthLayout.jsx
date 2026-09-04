@@ -1,19 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { Outlet, Navigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../config/firebase';
+
 
 export default function AuthLayout() {
-  const [user, setUser] = useState(null);
-  const [checking, setChecking] = useState(true);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setChecking(false);
-    });
-    return unsubscribe;
-  }, []);
+  const {user, checking} = useContext(AuthContext)
+  console.log(user.photoURL)
 
   if (checking) {
     return <p>Loading...</p>;
