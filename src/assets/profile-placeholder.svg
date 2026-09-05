@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Circular Light Background -->
+  <circle cx="100" cy="100" r="90" fill="#f0f2f5" />
+
+  <!-- Head -->
+  <circle cx="100" cy="80" r="26" fill="#5c6368" />
+
+  <!-- Shoulders / Body -->
+  <path d="M 52 144 C 52 118, 68 110, 100 110 C 132 110, 148 118, 148 144 Z" fill="#5c6368" />
+</svg>

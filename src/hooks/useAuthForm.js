@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from 'firebase/auth'
 import { auth, provider } from '../config/firebase'
 import { validateAuthForm } from '../utils/validateAuthForm'
@@ -53,5 +54,14 @@ export function useAuthForm(mode) {
     }
   }
 
-  return { formData, error, handleChange, handleSubmit, handleGoogleAuth }
+  async function handleLogout() {
+  try {
+    navigate('/')
+    await signOut(auth)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+  return { formData, error, handleChange, handleSubmit, handleGoogleAuth, handleLogout }
 }

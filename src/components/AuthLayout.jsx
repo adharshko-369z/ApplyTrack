@@ -6,7 +6,6 @@ import { Outlet, Navigate } from 'react-router-dom';
 export default function AuthLayout() {
 
   const {user, checking} = useContext(AuthContext)
-  console.log(user.photoURL)
 
   if (checking) {
     return <p>Loading...</p>;

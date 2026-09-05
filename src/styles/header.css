@@ -1,11 +1,89 @@
+header{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background-color: #FFFFFF;
+    padding: .5rem;
+    width: 100%;
+}
+
 .logo{
     display: flex;
     align-items: center;
-    padding: .5rem;
-    background-color: #FFFFFF;
 }
 
 .logo > span{
     font-size: 1.125rem;
     font-weight: bold;
+}
+
+/* profile */
+.profile{
+    margin-left: auto;
+}
+
+.profile-btn {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    /* padding: .25rem .5rem; */
+    padding: 0;
+}
+
+.profile-image {
+    width: 30px;  
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E6EA;
+    padding: .5rem ;
+    right: 0;
+    margin-right: .5rem;
+}
+
+.profile-btn > span,
+.profile-card > span{
+    border-radius: 50%;
+    background-color: #2E5EAA;
+    padding: .25rem .5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.profile-card > p{
+    font-size: .875rem;
+}
+
+.profile-placeholder{
+    background-color: #FFFFFF;
+}
+
+.profile-card > .profile-nav{
+    padding: .5rem;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: .5rem;
+}
+
+.profile-card > button,
+.profile-card > .profile-nav{
+    min-width: 175px;
+    width: 100%;
+    color: #2E5EAA;
+    background-color: #FFFFFF;
+    border: 1px solid #2E5EAA;
 }
