@@ -1,0 +1,41 @@
+/* application-list */
+
+.applications{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .5rem;
+    border-radius: 6px;
+}
+
+.application{
+    width: 100%;
+    display: flex;
+    background-color: #FFFFFF;
+    padding: .5rem;
+}
+
+.primary-applicaton-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-applicaton-info > p,
+.secondary-applicaton-info > p{
+    margin: 0;
+    padding: .5em;
+    font-weight: bold;
+}
+
+.secondary-applicaton-info{
+    margin-left: auto;
+}
+
+.primary-applicaton-info >.application-location,
+.secondary-applicaton-info >.application-date{
+    font-weight: 500;
+}
+
+.primary-applicaton-info > .application-role{
+    color: #c5ccd3;
+}

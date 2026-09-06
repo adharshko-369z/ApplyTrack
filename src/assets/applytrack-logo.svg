@@ -27,10 +27,12 @@
   <path d="M100 230 L210 275 C235 285, 265 285, 290 275 L400 230 V352 C400 367.464, 387.464, 380, 372 380 H128 C112.536 380, 100 367.464, 100 352 Z"
         fill="#254C87"/>
 
-  <!-- Pipeline dots: Applied (gray) -> Response (green) -> No Response (amber) -->
-  <circle cx="150" cy="337" r="7" fill="#94A3B8"/>
-  <line x1="157" y1="337" x2="183" y2="337" stroke="#94A3B8" stroke-width="3"/>
-  <circle cx="190" cy="337" r="7" fill="#1F9D55"/>
-  <line x1="197" y1="337" x2="223" y2="337" stroke="#94A3B8" stroke-width="3"/>
-  <circle cx="230" cy="337" r="7" fill="#D97706"/>
+  <!-- Pipeline dots: No response (gray) -> Interviewing (blue) -> Offer (green) -> Rejected (red) -->
+<circle cx="140" cy="337" r="7" fill="#94A3B8"/>
+<line x1="147" y1="337" x2="168" y2="337" stroke="#94A3B8" stroke-width="3"/>
+<circle cx="175" cy="337" r="7" fill="#3B82F6"/>
+<line x1="182" y1="337" x2="203" y2="337" stroke="#94A3B8" stroke-width="3"/>
+<circle cx="210" cy="337" r="7" fill="#1F9D55"/>
+<line x1="217" y1="337" x2="238" y2="337" stroke="#94A3B8" stroke-width="3"/>
+<circle cx="245" cy="337" r="7" fill="#DC2626"/>
 </svg>
