@@ -1,0 +1,27 @@
+.badge{
+    padding: .5em 1em;
+    font-size: .75rem;
+    font-weight: bold;
+    margin: 0;
+    border-radius: 15px;
+}
+
+.noresponse{
+    color: #475569;
+    background-color: #F1F5F9;
+}
+
+.interviewing{
+    color: #1D4ED8;
+    background-color: #DBEAFE;
+}
+
+.offer{
+    color: #15803D;
+    background-color: #DCFCE7;
+}
+
+.rejected{
+    color: #B91C1C;
+    background-color: #FEE2E2;
+}

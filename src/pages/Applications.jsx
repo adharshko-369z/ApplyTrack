@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import ApplicationList from "../components/application-components/ApplicationList";
-// import ApplicationModal from "../../components/ApplicationModal";
 
 const dummyApplications = [
   {
     id: "1",
     company: "Google",
     role: "Frontend Developer",
-    status: "no_response",
+    status: "No Response",
     dateApplied: "2026-09-02",
     location: "Remote",
     jobUrl: "",
@@ -17,7 +17,7 @@ const dummyApplications = [
     id: "2",
     company: "Stripe",
     role: "Frontend Engineer",
-    status: "interviewing",
+    status: "Interviewing",
     dateApplied: "2026-08-28",
     location: "Bangalore",
     jobUrl: "",
@@ -27,7 +27,7 @@ const dummyApplications = [
     id: "3",
     company: "Meta",
     role: "React Developer",
-    status: "offer",
+    status: "Offer",
     dateApplied: "2026-08-15",
     location: "Remote",
     jobUrl: "",
@@ -37,7 +37,7 @@ const dummyApplications = [
     id: "4",
     company: "Netflix",
     role: "UI Developer",
-    status: "rejected",
+    status: "Rejected",
     dateApplied: "2026-08-20",
     location: "Hyderabad",
     jobUrl: "",
@@ -46,63 +46,61 @@ const dummyApplications = [
 ];
 
 export default function Applications() {
+  const [searchParams,setSearchParams] = useSearchParams()
   const [applications, setApplications] = useState(dummyApplications);
-  const [selectedApp, setSelectedApp] = useState(null);
-  // null = modal closed
-  // {} = add mode (new empty application)
-  // {...app} = edit mode
+  const [isFilterCardOpen, setIsFilterCardOpen ] = useState(false)
+  const filterOptions = [
+  { value: "all", label: "All" },
+  { value: "No Response", label: "No response" },
+  { value: "Interviewing", label: "Interviewing" },
+  { value: "Offer", label: "Offer" },
+  { value: "Rejected", label: "Rejected" },
+];
 
-  function handleCardClick(app) {
-    setSelectedApp(app);
-  }
+  const  filterStatus = searchParams.get("status") || "all"
 
-  function handleAddClick() {
-    setSelectedApp({});
-  }
-
-  function handleClose() {
-    setSelectedApp(null);
-  }
-
-  function handleSave(formData) {
-    if (formData.id) {
-      // edit existing
-      setApplications((prev) =>
-        prev.map((app) => (app.id === formData.id ? formData : app))
-      );
+  function handleFilterChange(newStatus) {
+    if (newStatus === "all") {
+      searchParams.delete("status"); 
+      setSearchParams(searchParams);
     } else {
-      // create new
-      const newApp = { ...formData, id: Date.now().toString() };
-      setApplications((prev) => [...prev, newApp]);
+      setSearchParams({ status: newStatus });
     }
-    setSelectedApp(null);
   }
 
-  function handleDelete(id) {
-    setApplications((prev) => prev.filter((app) => app.id !== id));
-    setSelectedApp(null);
-  }
+  const filteredApplications = applications.filter((app) =>
+    filterStatus === "all" ? true : app.status === filterStatus
+  );
 
   return (
     <div className="applications-page">
       <div className="applications-toolbar">
+        <div className="filter">
+          <button className="filter-btn" onClick={()=> setIsFilterCardOpen(prev => !prev)}>Filter</button>
+          {isFilterCardOpen && <div className="filter-card">
+            {filterOptions.map((option) => (
+              <button
+                key={option.value}
+                className={filterStatus === option.value ? "filter-option filter-active" : "filter-option"}
+                onClick={() => {
+                  handleFilterChange(option.value);
+                  setIsFilterCardOpen(false);
+                }}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>}
+        </div>
+
         <input type="text" placeholder="Search applications..." />
-        <button onClick={handleAddClick}>+</button>
+        <button className="add-btn">+ Add</button>
       </div>
 
       <ApplicationList
-        applications={applications}
-        onCardClick={handleCardClick}
+        applications={filteredApplications}
       />
 
-      {/* {selectedApp && (
-        <ApplicationModal
-          application={selectedApp}
-          onClose={handleClose}
-          onSave={handleSave}
-          onDelete={handleDelete}
-        />
-      )} */}
     </div>
   );
 }

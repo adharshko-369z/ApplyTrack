@@ -1,41 +1,108 @@
-/* application-list */
 
-.applications{
+/* applications-toolbar */
+.applications-toolbar{
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: .5rem;
-    padding: .5rem;
-    border-radius: 6px;
+    padding: .5rem 0 0;
 }
 
-.application{
-    width: 100%;
-    display: flex;
+.filter > .filter-btn{
+    color: #2E5EAA;
     background-color: #FFFFFF;
-    padding: .5rem;
+    border: 1px solid #2E5EAA;
 }
 
-.primary-applicaton-info{
+.filter > .filter-card{
     display: flex;
     flex-direction: column;
+    align-items: start;
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E6EA;
+    padding: .5rem ;
+    margin-right: .5rem;
 }
 
-.primary-applicaton-info > p,
-.secondary-applicaton-info > p{
-    margin: 0;
-    padding: .5em;
-    font-weight: bold;
+.filter-card > .filter-option {
+  min-width: 150px;
+  width: 100%;
+  border-radius: 0;
+  background-color: #FFFFFF;
 }
 
-.secondary-applicaton-info{
-    margin-left: auto;
+
+.filter-card > .filter-active{
+  border: 1px solid #2E5EAA;
+  color: #2E5EAA;
 }
 
-.primary-applicaton-info >.application-location,
-.secondary-applicaton-info >.application-date{
-    font-weight: 500;
+.applications-toolbar > .add-btn{
+    color: #FFFFFF;
+    background-color: #2E5EAA;
 }
 
-.primary-applicaton-info > .application-role{
-    color: #c5ccd3;
+.applications {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+}
+
+/* application-page */
+.application {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.application:hover {
+  border-color: #9ca3af;
+}
+
+.application:active {
+  transform: scale(0.995);
+}
+
+.primary-applicaton-info p {
+  margin: 0;
+}
+
+.primary-applicaton-info p:first-child {
+  font-weight: 600;
+  font-size: 15px;
+  color: #111827;
+}
+
+.application-role {
+  font-size: 13px;
+  color: #374151;
+  margin-top: 2px !important;
+}
+
+.application-location {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 6px !important;
+  align-self: flex-end;
+}
+
+.secondary-applicaton-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.application-date {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0 !important;
 }

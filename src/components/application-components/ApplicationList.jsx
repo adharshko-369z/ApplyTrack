@@ -1,3 +1,5 @@
+import Badge from "../Badge"
+
 export default function ApplicationList({ applications}){
     const appList = applications.map(application => {
         return(
@@ -8,7 +10,7 @@ export default function ApplicationList({ applications}){
                     <p className="application-location">{application.location}</p>
                 </div>
                 <div className="secondary-applicaton-info">
-                    <p>{application.status}</p>
+                    <Badge variant={application.status}>{application.status}</Badge>
                     <p className="application-date">{application.dateApplied}</p>
                 </div>
             </div>
