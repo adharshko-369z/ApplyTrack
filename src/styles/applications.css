@@ -113,3 +113,88 @@
   padding: 40px 16px;
   color: #9ca3af;
 }
+
+/* application-read-modal */
+
+.modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.modal-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal-actions{
+  display: flex;
+  gap: .5em;
+  margin-left: auto;
+}
+
+.modal-content > .modal-close-btn{
+  align-self: center;
+}
+
+.modal-content > p{
+  margin-bottom: 0;
+}
+
+.modal-actions button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.edit-btn {
+  background: #fff;
+  border: 1px solid #2E5EAA;
+  color: #2E5EAA;
+}
+
+.edit-btn:hover {
+  background: #2E5EAA;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #fff;
+  border: 1px solid #DC2626;
+  color: #DC2626;
+}
+
+.delete-btn:hover {
+  background: #DC2626;
+  color: #fff;
+}
+
+.modal-close-btn {
+  background: #F7F8FA;
+  border: 1px solid #E3E6EA;
+  color: #1C2126;
+}

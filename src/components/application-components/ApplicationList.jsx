@@ -1,6 +1,6 @@
 import Badge from "../Badge"
 
-export default function ApplicationList({ applications, highlightMatch, searchTerm}){
+export default function ApplicationList({ applications, highlightMatch, searchTerm, onCardClick}){
 
     if (applications.length === 0) {
         return (
@@ -17,7 +17,7 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
         const statusVariant = application.status.split("_").join("-")
 
         return(
-            <div key={application.id} className="application">
+            <div key={application.id} className="application" onClick={() => onCardClick(application)}>
                 <div className="primary-applicaton-info">
                     <p>{highlightMatch(application.company, searchTerm)}</p>
                     <p className="application-role">{highlightMatch(application.role, searchTerm)}</p>

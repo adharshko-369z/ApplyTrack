@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ApplicationList from "../components/application-components/ApplicationList";
+import ApplicationReadModal from "../components/application-components/ApplicationReadModal";
 import Filter from "../components/application-components/Filter";
 
 const dummyApplications = [
@@ -52,6 +53,19 @@ export default function Applications() {
   const [searchTerm, setSearchTerm] = useState("")
 
   const  filterStatus = searchParams.get("status") || "all"
+  const appID = searchParams.get("id")
+  const selectedApp = applications.find(app => app.id === appID) || null
+
+
+  function handleCardClick(app) {
+    searchParams.set("id", app.id)
+    setSearchParams(searchParams)
+  }
+
+  function handleCloseModal() {
+    searchParams.delete("id")
+    setSearchParams(searchParams)
+  }
 
   function handleFilterChange(newStatus) {
     if (newStatus === "all") {
@@ -101,7 +115,17 @@ export default function Applications() {
         applications={displayedApplications}
         highlightMatch={highlightMatch}
         searchTerm = {searchTerm}
+        onCardClick = {handleCardClick}
       />
+
+      {selectedApp && (
+        <ApplicationReadModal
+          application={selectedApp}
+          onClose={handleCloseModal}
+          onEdit={() => console.log("edit - later")}
+          onDelete={() => console.log("delete - later")}
+        />
+      )}
 
     </div>
   );
