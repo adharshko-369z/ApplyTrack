@@ -198,3 +198,36 @@
   border: 1px solid #E3E6EA;
   color: #1C2126;
 }
+
+/* application-form-modal */
+.form-field{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: .5rem;
+  margin: .25rem 0;
+}
+
+#status{
+  padding: .5rem;
+  font-size: 1rem;
+  border: 1px solid #E3E6EA; 
+}
+
+textarea{
+  border: 1px solid #E3E6EA; 
+}
+
+.form-actions{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.form-actions > button[type="submit"]{
+  background-color: #2E5EAA;
+  color: #FFFFFF;
+}

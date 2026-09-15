@@ -9,6 +9,7 @@ export default function Profile() {
     const [isOpen, setIsOpen] = useState(false)
     const { handleLogout } = useAuthForm()
     const profileRef = useRef(null)
+    
 
     // close dropdown on outside click
     useEffect(() => {
