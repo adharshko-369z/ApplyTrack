@@ -6,7 +6,7 @@ import ApplicationFormModal from "../components/application-components/Applicati
 import Filter from "../components/application-components/Filter";
 import { AuthContext } from "../context/AuthContext";
 import { db } from "../config/firebase";
-import { collection, query, where, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore"
+import { collection, query, where, getDocs, addDoc, updateDoc, deleteDoc, doc, orderBy } from "firebase/firestore"
 
 
 
@@ -25,7 +25,8 @@ export default function Applications() {
     async function fetchApplications() {
       const q = query(
         collection(db, "applications"),
-        where("userId", "==", user.uid)
+        where("userId", "==", user.uid),
+        orderBy("dateApplied","desc")
       ) 
       
       const snapshot = await getDocs(q)
@@ -121,7 +122,7 @@ return (
       <div className="applications-toolbar">
         <Filter filterStatus={filterStatus} handleFilterChange={handleFilterChange}/>
         <input type="text" placeholder="Search applications..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
-        <button className="add-btn" onClick={handleAddClick}>+ Add</button>
+        <button className="add-btn" onClick={handleAddClick}>Add</button>
       </div>
 
       <ApplicationList

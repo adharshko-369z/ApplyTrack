@@ -7,6 +7,7 @@ import Signup from './pages/Signup'
 import AuthLayout from './components/AuthLayout'
 import Dashboard from './pages/Dashboard'
 import Applicatons from './pages/Applications'
+import NotFound from './pages/NotFound'
 
 
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='dashboard' element={ <Dashboard /> }/>
             <Route path='applications' element={ <Applicatons /> }/>
           </Route>
+          <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

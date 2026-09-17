@@ -48,6 +48,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         type="text"
                         value={formData.company}
                         onChange={(e) => handleChange("company", e.target.value)}
+                        placeholder="e.g. Google"
                         required
                     />
                 </div>
@@ -59,6 +60,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         type="text"
                         value={formData.role}
                         onChange={(e) => handleChange("role", e.target.value)}
+                        placeholder="e.g. Frontend Developer"
                         required
                     />
                 </div>
@@ -95,6 +97,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         type="text"
                         value={formData.location}
                         onChange={(e) => handleChange("location", e.target.value)}
+                        placeholder="e.g. Remote, Bangalore"
                         required
                     />
                 </div>
@@ -106,6 +109,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         type="url"
                         value={formData.jobUrl}
                         onChange={(e) => handleChange("jobUrl", e.target.value)}
+                        placeholder="https://company.com/careers/job-id"
                     />
                 </div>
 
@@ -116,6 +120,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         rows={4}
                         value={formData.notes}
                         onChange={(e) => handleChange("notes", e.target.value)}
+                        placeholder="Any notes — referral contact, interview prep, follow-up reminders..."
                     />
                 </div>
 

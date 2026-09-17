@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    padding: 1rem 0 .5rem;
+    padding: 1rem .5rem;
     background-color: #FFFFFF;
 }
 
@@ -40,8 +40,8 @@
 }
 
 .applications-toolbar > .add-btn{
-    color: #FFFFFF;
-    background-color: #2E5EAA;
+  color: #FFFFFF;
+  background-color: #2E5EAA;
 }
 
 .applications {
@@ -215,7 +215,10 @@
 }
 
 textarea{
+  font-family: sans-serif;
   border: 1px solid #E3E6EA; 
+  font-size: 1rem;
+  padding: .5em;
 }
 
 .form-actions{
