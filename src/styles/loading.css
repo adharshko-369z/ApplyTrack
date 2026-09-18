@@ -1,0 +1,53 @@
+.skeleton-line {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-stat { width: 140px; height: 20px; }
+.skeleton-number { width: 40px; height: 28px; margin: 0 auto 8px; }
+.skeleton-label { width: 80px; height: 14px; margin: 0 auto 12px; }
+.skeleton-link { width: 100px; height: 14px; margin: 0 auto; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* application-loading */
+.skeleton-application{
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: .5rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+    margin: .5rem;
+}
+ 
+/* auth-checking-loading */
+.auth-checking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 12px;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3b4b8c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

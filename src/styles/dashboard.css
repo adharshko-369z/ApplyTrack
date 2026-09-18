@@ -81,3 +81,43 @@
 .rejected-card{
     color: #B91C1C;
 }
+
+/* dashboard when 0 applications */
+.dashboard-empty{
+    min-width: 100%;
+    margin: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.dashboard-empty > p{
+    margin: 0;
+    color: #6B7280;
+}
+
+p.dashboard-empty-title{
+    font-weight: bold;
+}
+
+p.dashboard-empty-subtext{
+    text-align: center;
+    font-weight: 500;
+}
+
+.dashboard-empty-cta{
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: .5em;
+    margin: 2em 0;
+    width: 100%;
+    background-color: #2E5EAA;
+    color: #FFFFFF;
+    border: 1px solid #2E5EAA;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+}

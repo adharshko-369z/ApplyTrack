@@ -8,8 +8,13 @@ export default function AuthLayout() {
   const {user, checking} = useContext(AuthContext)
 
   if (checking) {
-    return <p>Loading...</p>
-  }
+  return (
+    <div className="auth-checking">
+      <div className="spinner" />
+      <p>Loading...</p>
+    </div>
+  )
+}
 
   if (!user) {
     return <Navigate to="/login" replace />

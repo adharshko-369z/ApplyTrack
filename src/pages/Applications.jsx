@@ -4,6 +4,7 @@ import ApplicationList from "../components/application-components/ApplicationLis
 import ApplicationReadModal from "../components/application-components/ApplicationReadModal";
 import ApplicationFormModal from "../components/application-components/ApplicationFormModal";
 import Filter from "../components/application-components/Filter";
+import ApplicationSkeleton from "../components/loading-components/ApplicationSkeleton";
 import { AuthContext } from "../context/AuthContext";
 import { db } from "../config/firebase";
 import { collection, query, where, getDocs, addDoc, updateDoc, deleteDoc, doc, orderBy } from "firebase/firestore"
@@ -15,6 +16,7 @@ export default function Applications() {
   const [applications, setApplications] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [modalMode, setModalMode] = useState(null)
+  const [loading, setLoading] = useState(true)
   const { user } = useContext(AuthContext)
   
   const  filterStatus = searchParams.get("status") || "all"
@@ -34,13 +36,24 @@ export default function Applications() {
       const apps = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
 
       setApplications(apps)
+      setLoading(false)
     }
     
-    if (user) {
+    if (user) { 
       fetchApplications()
     }
   }, [user])
-  
+
+  useEffect(() => {
+    if (searchParams.get("add") === "true") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing modal state with URL param on mount, intentional
+      setModalMode("create")
+      searchParams.delete("add")
+      setSearchParams(searchParams)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+    
   
   function handleCardClick(app) {
     searchParams.set("id", app.id)
@@ -125,12 +138,17 @@ return (
         <button className="add-btn" onClick={handleAddClick}>Add</button>
       </div>
 
-      <ApplicationList
+      { loading ? (
+        <ApplicationSkeleton />
+        )
+        :(
+        <ApplicationList
         applications={displayedApplications}
         highlightMatch={highlightMatch}
         searchTerm = {searchTerm}
         onCardClick = {handleCardClick}
         />
+      )}
 
       {selectedApp && (
         <ApplicationReadModal
