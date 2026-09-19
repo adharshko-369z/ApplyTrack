@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: start;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: .5rem;
     background-color: #FFFFFF;
     border-radius: 12px;
     padding: 1rem;
