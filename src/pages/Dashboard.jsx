@@ -4,32 +4,47 @@ import { AuthContext } from "../context/AuthContext"
 import { db } from "../config/firebase"
 import { collection, query, where, getDocs } from "firebase/firestore"
 import DashboardSkeleton from "../components/loading-components/DashboardSkeleton"
+import { STATUSES } from "../constants/applicationStatus"
 
-const STATUSES = ["no_response", "interviewing", "offer", "rejected"]
-
-export default function Dashboard( ) {
+export default function Dashboard() {
   const [applications, setApplications] = useState([])
   const { user } = useContext(AuthContext)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  useEffect(() => {
-    async function fetchApplications() {
-      const q = query(
-        collection(db, "applications"),
-        where("userId", "==", user.uid)
-      )
-
-      const snapshot = await getDocs(q)
-      const apps = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-
-      setApplications(apps)
-      setLoading(false)
-    }
-
-    if (user) {
-      fetchApplications()
-    }
-  }, [user])
+   useEffect(() => {
+      async function fetchApplications() {
+        setLoading(true)
+        setError(null)
+        try{
+          const q = query(
+            collection(db, "applications"),
+            where("userId", "==", user.uid),
+          ) 
+          
+          const snapshot = await getDocs(q)
+          // checks if this result came from local cache with zero documents —
+          // meaning the request likely never reached the backend (e.g. offline),
+          // which getDocs doesn't treat as a thrown error  
+          if(snapshot.metadata.fromCache && snapshot.empty){
+            setError("You appear to be offline. Please check your connection and try again.")
+            setApplications([])
+          }else{
+            const apps = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+            setApplications(apps)
+          } 
+        }catch (err){
+          console.error(err)
+          setError("Couldn't load your applications. Check your connection and try again.")
+        }finally{
+          setLoading(false)
+        }
+      }
+      
+      if (user) { 
+        fetchApplications()
+      }
+    }, [user])
 
   const counts = applications.reduce((acc, app) => {
     acc[app.status] = (acc[app.status] || 0) + 1
@@ -66,10 +81,16 @@ export default function Dashboard( ) {
 
   return (
     <section className="dashboard-page">
-
       { loading ?(
         <DashboardSkeleton />
-      ) : total === 0 ?
+      )
+      :error ? (
+          <div className="applications-error">
+            <p>{error}</p>
+            <button onClick={() => window.location.reload()}>Retry</button>
+          </div>
+      ) 
+      : total === 0 ?
       (
         <div className="dashboard-empty">
           <p className="dashboard-empty-title">No applications yet</p>
@@ -90,12 +111,12 @@ export default function Dashboard( ) {
         </div>
 
         <div className="status-cards">
-          {STATUSES.map(status => (
-              <div key={status} className={`status-card ${status}-card`}>
-              <p className="status-count">{counts[status] || 0}</p>
-              <p className="status-label">{status.replace("_", " ")}</p>
-              {counts[status] > 0 ? (
-                <Link to={`/applications?status=${status}`} className="status-link">
+          {STATUSES.map(({value, label}) => (
+              <div key={value} className={`status-card ${value}-card`}>
+              <p className="status-count">{counts[value] || 0}</p>
+              <p className="status-label">{label}</p>
+              {counts[value] > 0 ? (
+                <Link to={`/applications?status=${status.value}`} className="status-link">
                   Explore applications 
                   </Link>
                 ) : (

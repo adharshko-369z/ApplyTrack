@@ -1,5 +1,5 @@
-// components/application-components/ApplicationFormModal.jsx
 import { useState } from "react"
+import { STATUSES } from "../../constants/applicationStatus"
 
 export default function ApplicationFormModal({ application, mode, onCancel, onSave }) {
     const isEdit = mode === "edit"
@@ -7,7 +7,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
     const [formData, setFormData] = useState({
         company: application?.company || "",
         role: application?.role || "",
-        status: application?.status || "no_response",
+        status: application?.status || "no-response",
         dateApplied: application?.dateApplied || "",
         location: application?.location || "",
         jobUrl: application?.jobUrl || "",
@@ -72,10 +72,9 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         value={formData.status}
                         onChange={(e) => handleChange("status", e.target.value)}
                     >
-                        <option value="no_response">No response</option>
-                        <option value="interviewing">Interviewing</option>
-                        <option value="offer">Offer</option>
-                        <option value="rejected">Rejected</option>
+                        {STATUSES.map(({ value, label }) => (
+                            <option key={value} value={value}>{label}</option>
+                        ))}
                     </select>
                 </div>
 

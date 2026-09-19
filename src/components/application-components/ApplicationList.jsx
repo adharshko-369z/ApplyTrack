@@ -1,4 +1,5 @@
 import Badge from "../Badge"
+import { STATUSES } from "../../constants/applicationStatus"
 
 export default function ApplicationList({ applications, highlightMatch, searchTerm, onCardClick}){
 
@@ -13,9 +14,8 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
 
     const appList = applications.map(application => {
 
-        const statusLabel = application.status.split("_").map(word => word[0].toUpperCase()+word.slice(1)).join(" ")
-        const statusVariant = application.status.split("_").join("-")
-
+        const statusMeta = STATUSES.find(s => s.value === application.status)
+        
         return(
             <div key={application.id} className="application" onClick={() => onCardClick(application)}>
                 <div className="primary-applicaton-info">
@@ -24,7 +24,7 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
                     <p className="application-location">{highlightMatch(application.location, searchTerm)}</p>
                 </div>
                 <div className="secondary-applicaton-info">
-                    <Badge variant={statusVariant}>{statusLabel}</Badge>
+                    <Badge variant={statusMeta?.value}>{statusMeta?.label}</Badge>
                     <p className="application-date">{application.dateApplied}</p>
                 </div>
             </div>
