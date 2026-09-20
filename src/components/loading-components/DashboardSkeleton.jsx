@@ -1,7 +1,7 @@
 export default function DashboardSkeleton() {
   return (
     <>
-      <div className="dashboard-main-analysis skeleton-analysis">
+      <div className="dashboard-main-analysis skeleton-analysis" role="status" aria-label="Loading dashboard">
         <div className="skeleton-line skeleton-stat" />
         <div className="skeleton-line skeleton-stat" />
       </div>

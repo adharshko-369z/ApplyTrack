@@ -6,7 +6,7 @@ export default function Header(){
         <>
         <header>
             <div className="logo">
-                <img src={applyTrackLogo} alt="a suitcase inside an application track form" width="40" />
+                <img src={applyTrackLogo} alt="" width="40" />
                 <span>ApplyTrack</span>
             </div>
             <Profile />

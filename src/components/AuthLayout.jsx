@@ -28,13 +28,13 @@ export default function AuthLayout() {
         className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
         end
       >
-        Dashboard
+        {({ isActive }) => <span aria-current={isActive ? "page" : undefined}>Dashboard</span>}
       </NavLink>
       <NavLink 
         to="/applications"
         className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} 
       >
-        Applications
+        {({ isActive }) => <span aria-current={isActive ? "page" : undefined}>Applications</span>}
       </NavLink>
     </nav>
     <Outlet />

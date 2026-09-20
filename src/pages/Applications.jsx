@@ -88,7 +88,7 @@ return (
           <ApplicationSkeleton />
           )
           :error ? (
-            <div className="applications-error">
+            <div className="applications-error"  role="alert">
               <p>{error}</p>
               <button onClick={() => window.location.reload()}>Retry</button>
             </div>

@@ -23,7 +23,7 @@ export default function Dashboard() {
         <DashboardSkeleton />
       )
       :error ? (
-          <div className="applications-error">
+          <div className="applications-error" role="alert">
             <p>{error}</p>
             <button onClick={() => window.location.reload()}>Retry</button>
           </div>
