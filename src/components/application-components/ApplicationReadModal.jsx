@@ -1,8 +1,11 @@
 import Badge from "../Badge"
+import { useModalA11y } from "../../hooks/useModalA11y"
+import { STATUSES } from "../../constants/applicationStatus"
 
 export default function ApplicationReadModal({ application, onClose, onEdit, onDelete }) {
-    const statusLabel = application.status.split("_").map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
-    const statusVariant = application.status.split("_").join("-")
+    const statusMeta = STATUSES.find(s => s.value === application.status)
+
+    useModalA11y(onClose)
 
     function handleDelete() {
         const confirmed = window.confirm(`Delete application for ${application.company}?`)
@@ -13,15 +16,20 @@ export default function ApplicationReadModal({ application, onClose, onEdit, onD
 
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content" 
+                 onClick={(e) => e.stopPropagation()}
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="modal-title"
+            >
                 <div className="modal-header">
-                    <h2>{application.company}</h2>
+                    <h2 id="modal-title">{application.company}</h2>
                     <div className="modal-actions">
                         <button className="edit-btn" onClick={onEdit}>Edit</button>
                         <button className="delete-btn" onClick={handleDelete}>Delete</button>
                     </div>
                 </div>
-                <Badge variant={statusVariant}>{statusLabel}</Badge>
+                <Badge variant={statusMeta?.value}>{statusMeta?.label}</Badge>
                 <p>{`Role: ${application.role}`}</p>
                 <p>{`Location: ${application.location}`}</p>
                 <p>{`Applied Date: ${application.dateApplied}`}</p>

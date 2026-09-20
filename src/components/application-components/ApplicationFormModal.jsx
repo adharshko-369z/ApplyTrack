@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { STATUSES } from "../../constants/applicationStatus"
+import { useModalA11y } from "../../hooks/useModalA11y"
 
 export default function ApplicationFormModal({ application, mode, onCancel, onSave }) {
+    const [errors, setErrors] = useState({})
     const isEdit = mode === "edit"
+    useModalA11y(onCancel)
 
     const [formData, setFormData] = useState({
         company: application?.company || "",
@@ -27,19 +30,32 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
             location: formData.location.trim(),
         }
 
-        if (!cleaned.company || !cleaned.role || !cleaned.location || !cleaned.dateApplied) {
-            alert("Please fill in all required fields")
+        const newErrors = {}
+        if (!cleaned.company) newErrors.company = "Company is required"
+        if (!cleaned.role) newErrors.role = "Role is required"
+        if (!cleaned.location) newErrors.location = "Location is required"
+        if (!cleaned.dateApplied) newErrors.dateApplied = "Date applied is required"
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors)
             return
         }
 
+        setErrors({})
         await onSave(cleaned)
         onCancel()
     }
 
     return (
         <div className="modal-overlay" onClick={onCancel}>
-            <form className="modal-content" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
-                <h2>{isEdit ? "Edit Application" : "Add Application"}</h2>
+            <form className="modal-content"
+                  onClick={(e) => e.stopPropagation()} 
+                  onSubmit={handleSubmit}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="modal-title"
+            >
+                <h2 id="modal-title" >{isEdit ? "Edit Application" : "Add Application"}</h2>
 
                 <div className="form-field">
                     <label htmlFor="company">Company</label>
@@ -50,7 +66,14 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         onChange={(e) => handleChange("company", e.target.value)}
                         placeholder="e.g. Google"
                         required
+                        aria-invalid={errors.company ? "true" : "false"}
+                        aria-describedby={errors.company ? "company-error" : undefined}
                     />
+                    {errors?.company && (
+                        <p id="company-error" className="field-error" role="alert">
+                            {errors.company}
+                        </p>
+                    )}  
                 </div>
 
                 <div className="form-field">
@@ -62,7 +85,14 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         onChange={(e) => handleChange("role", e.target.value)}
                         placeholder="e.g. Frontend Developer"
                         required
+                        aria-invalid={errors.role ? "true" : "false"}
+                        aria-describedby={errors.role ? "role-error" : undefined}
                     />
+                    {errors?.role && (
+                        <p id="role-error" className="field-error" role="alert">
+                            {errors.role}
+                        </p>
+                    )}  
                 </div>
 
                 <div className="form-field">
@@ -86,7 +116,14 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         value={formData.dateApplied}
                         onChange={(e) => handleChange("dateApplied", e.target.value)}
                         required
+                        aria-invalid={errors.dateApplied ? "true" : "false"}
+                        aria-describedby={errors.dateApplied ? "dateApplied-error" : undefined}
                     />
+                    {errors?.dateApplied && (
+                        <p id="dateApplied-error" className="field-error" role="alert">
+                            {errors.dateApplied}
+                        </p>
+                    )}
                 </div>
 
                 <div className="form-field">
@@ -98,7 +135,14 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                         onChange={(e) => handleChange("location", e.target.value)}
                         placeholder="e.g. Remote, Bangalore"
                         required
+                        aria-invalid={errors.location ? "true" : "false"}
+                        aria-describedby={errors.location ? "location-error" : undefined}
                     />
+                    {errors?.location && (
+                        <p id="location-error" className="field-error" role="alert">
+                            {errors.location}
+                        </p>
+                    )}
                 </div>
 
                 <div className="form-field">

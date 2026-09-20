@@ -42,3 +42,10 @@ button{
     border: 1px solid #2E5EAA;
     border-radius: 4px;
 }
+
+
+.field-error{
+    color: red;
+    font-weight: 500;
+    margin: 0;
+}

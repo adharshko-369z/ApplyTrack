@@ -21,6 +21,7 @@ export default function Applications() {
   const  filterStatus = searchParams.get("status") || "all"
   const appID = searchParams.get("id")
   const selectedApp = applications.find(app => app.id === appID) || null
+  const isModalOpen = Boolean(selectedApp) || modalMode === "edit" || modalMode === "create"
   
   useEffect(() => {
     if (searchParams.get("add") === "true") {
@@ -74,39 +75,41 @@ export default function Applications() {
 
 
 return (
+  
   <div className="applications-page">
-      <div className="applications-toolbar">
-        <Filter filterStatus={filterStatus} handleFilterChange={handleFilterChange}/>
-        <input type="text" placeholder="Search applications..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
-        <button className="add-btn" onClick={handleAddClick}>Add</button>
+      <div inert={isModalOpen}>
+        <div className="applications-toolbar">
+          <Filter filterStatus={filterStatus} handleFilterChange={handleFilterChange}/>
+          <input type="text" placeholder="Search applications..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
+          <button className="add-btn" onClick={handleAddClick}>Add</button>
+        </div>
+
+        { loading ? (
+          <ApplicationSkeleton />
+          )
+          :error ? (
+            <div className="applications-error">
+              <p>{error}</p>
+              <button onClick={() => window.location.reload()}>Retry</button>
+            </div>
+          )
+          :applications.length === 0 ? (
+            <div className="applications-empty">
+                <p className="applications-empty-title">No applications yet</p>
+                <p className="applications-empty-subtext">
+                  Click "Add" above to start tracking your job applications.
+                </p>
+            </div>
+          )
+          :(
+          <ApplicationList
+          applications={displayedApplications}
+          highlightMatch={highlightMatch}
+          searchTerm = {searchTerm}
+          onCardClick = {handleCardClick}
+          />
+        )}
       </div>
-
-      { loading ? (
-        <ApplicationSkeleton />
-        )
-        :error ? (
-          <div className="applications-error">
-            <p>{error}</p>
-            <button onClick={() => window.location.reload()}>Retry</button>
-          </div>
-        )
-        :applications.length === 0 ? (
-          <div className="applications-empty">
-              <p className="applications-empty-title">No applications yet</p>
-              <p className="applications-empty-subtext">
-                Click "Add" above to start tracking your job applications.
-              </p>
-          </div>
-        )
-        :(
-        <ApplicationList
-        applications={displayedApplications}
-        highlightMatch={highlightMatch}
-        searchTerm = {searchTerm}
-        onCardClick = {handleCardClick}
-        />
-      )}
-
       {selectedApp && (
         <ApplicationReadModal
         application={selectedApp}

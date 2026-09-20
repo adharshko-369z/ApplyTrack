@@ -5,7 +5,7 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
 
     if (applications.length === 0) {
         return (
-            <div className="no-results">
+            <div className="no-results" role="status">
             {searchTerm && <p>No results for "{searchTerm}"</p>}
             </div>
         )
@@ -17,7 +17,11 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
         const statusMeta = STATUSES.find(s => s.value === application.status)
         
         return(
-            <div key={application.id} className="application" onClick={() => onCardClick(application)}>
+            <button key={application.id} 
+                    className="application" 
+                    onClick={() => onCardClick(application)}
+                    aria-label={`${application.company}, ${application.role}, status: ${statusMeta?.label}, applied ${application.dateApplied}`}
+            >
                 <div className="primary-applicaton-info">
                     <p>{highlightMatch(application.company, searchTerm)}</p>
                     <p className="application-role">{highlightMatch(application.role, searchTerm)}</p>
@@ -27,7 +31,7 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
                     <Badge variant={statusMeta?.value}>{statusMeta?.label}</Badge>
                     <p className="application-date">{application.dateApplied}</p>
                 </div>
-            </div>
+            </button>
         )
     })
     return (
