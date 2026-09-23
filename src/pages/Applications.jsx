@@ -61,6 +61,11 @@ export default function Applications() {
       setSearchParams({ status: newStatus })
     }
   }
+
+  const counts = applications.reduce((acc, app) => {
+    acc[app.status] = (acc[app.status] || 0) + 1
+    return acc
+  }, {})
   
   const displayedApplications = applications.filter(app =>{
     const matchesStatus = filterStatus === "all" || app.status === filterStatus
@@ -76,39 +81,43 @@ export default function Applications() {
 
 return (
   
-  <div className="applications-page">
+  <section className="applications-page" aria-label="Applications">
       <div inert={isModalOpen}>
-        <div className="applications-toolbar">
-          <Filter filterStatus={filterStatus} handleFilterChange={handleFilterChange}/>
-          <input type="text" placeholder="Search applications..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
-          <button className="add-btn" onClick={handleAddClick}>Add</button>
+        <div className="applications-toolbar-wrapper">
+          <div className="applications-toolbar page-container">
+            <Filter filterStatus={filterStatus} handleFilterChange={handleFilterChange} counts={counts}/>
+            <input type="text" placeholder="Search applications..." value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)} />
+            <button className="add-btn route-links-to-btns" onClick={handleAddClick}>Add</button>
+          </div>
         </div>
 
-        { loading ? (
-          <ApplicationSkeleton />
-          )
-          :error ? (
-            <div className="applications-error"  role="alert">
-              <p>{error}</p>
-              <button onClick={() => window.location.reload()}>Retry</button>
-            </div>
-          )
-          :applications.length === 0 ? (
-            <div className="applications-empty">
-                <p className="applications-empty-title">No applications yet</p>
-                <p className="applications-empty-subtext">
-                  Click "Add" above to start tracking your job applications.
-                </p>
-            </div>
-          )
-          :(
-          <ApplicationList
-          applications={displayedApplications}
-          highlightMatch={highlightMatch}
-          searchTerm = {searchTerm}
-          onCardClick = {handleCardClick}
-          />
-        )}
+        <div className="page-container">
+          { loading ? (
+            <ApplicationSkeleton />
+            )
+            :error ? (
+              <div className="applications-error"  role="alert">
+                <p>{error}</p>
+                <button className="route-links-to-btns" onClick={() => window.location.reload()}>Retry</button>
+              </div>
+            )
+            :applications.length === 0 ? (
+              <div className="applications-empty">
+                  <p className="applications-empty-title">No applications yet</p>
+                  <p className="applications-empty-subtext">
+                    Click "Add" above to start tracking your job applications.
+                  </p>
+              </div>
+            )
+            :(
+            <ApplicationList
+            applications={displayedApplications}
+            highlightMatch={highlightMatch}
+            searchTerm = {searchTerm}
+            onCardClick = {handleCardClick}
+            />
+          )}
+        </div>
       </div>
       {selectedApp && (
         <ApplicationReadModal
@@ -128,6 +137,6 @@ return (
         />
       )}
 
-    </div>
+    </section>
   );
 }

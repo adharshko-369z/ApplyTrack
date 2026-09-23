@@ -1,4 +1,3 @@
-/* profile */
 .profile{
     margin-left: auto;
 }
@@ -11,7 +10,6 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    /* padding: .25rem .5rem; */
     padding: 0;
 }
 
@@ -29,8 +27,8 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    background-color: #FFFFFF;
-    border: 1px solid #E3E6EA;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     padding: .5rem ;
     right: 0;
     margin-right: .5rem;
@@ -39,10 +37,10 @@
 .profile-btn > span,
 .profile-card > span{
     border-radius: 50%;
-    background-color: #2E5EAA;
+    background-color: var(--color-primary);
     padding: .25rem .5rem;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--color-surface);
 }
 
 .profile-card > p{
@@ -50,7 +48,7 @@
 }
 
 .profile-placeholder{
-    background-color: #FFFFFF;
+    background-color: var(--color-surface);
 }
 
 .profile-card > .profile-nav{
@@ -64,7 +62,7 @@
 .profile-card > .profile-nav{
     min-width: 175px;
     width: 100%;
-    color: #2E5EAA;
-    background-color: #FFFFFF;
-    border: 1px solid #2E5EAA;
+    color: var( --color-primary);
+    background-color: var(--color-surface);
+    border: 1px solid var( --color-primary);
 }

@@ -1,16 +1,15 @@
-
 import { useState } from "react";
+import { STATUSES } from "../../constants/applicationStatus";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
-const filterOptions = [
-  { value: "all", label: "All" },
-  { value: "no_response", label: "No response" },
-  { value: "interviewing", label: "Interviewing" },
-  { value: "offer", label: "Offer" },
-  { value: "rejected", label: "Rejected" },
-];
-
-export default function Filter({ filterStatus, handleFilterChange }) {
+export default function Filter({ filterStatus, handleFilterChange, counts }) {
   const [isOpen, setIsOpen] = useState(false);
+  const filterRef = useClickOutside(() => setIsOpen(false))
+
+  const availableOptions = [
+    { value: "all", label: "All" },
+    ...STATUSES.filter(s => counts[s.value] > 0),
+  ]
 
   return (
     <div className="filter">
@@ -18,14 +17,14 @@ export default function Filter({ filterStatus, handleFilterChange }) {
         Filter
       </button>
       {isOpen && (
-        <div className="filter-card">
-          {filterOptions.map((option) => (
+        <div className="filter-card" ref={filterRef}>
+          {availableOptions.map((option) => (
             <button
               key={option.value}
               className={filterStatus === option.value ? "filter-option filter-active" : "filter-option"}
               onClick={() => {
-                handleFilterChange(option.value);
-                setIsOpen(false);
+                handleFilterChange(option.value)
+                setIsOpen(false)
               }}
             >
               {option.label}
@@ -34,5 +33,5 @@ export default function Filter({ filterStatus, handleFilterChange }) {
         </div>
       )}
     </div>
-  );
+  )
 }

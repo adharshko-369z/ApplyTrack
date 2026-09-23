@@ -16,7 +16,7 @@ export default function ApplicationReadModal({ application, onClose, onEdit, onD
 
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" 
+            <div className="modal-content modal-content-form" 
                  onClick={(e) => e.stopPropagation()}
                  role="dialog"
                  aria-modal="true"

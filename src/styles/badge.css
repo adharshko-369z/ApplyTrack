@@ -7,21 +7,31 @@
 }
 
 .no-response{
-    color: #475569;
-    background-color: #F1F5F9;
+    color: var(--color-status-none);
+    background-color: var(--color-status-none-bg);
 }
 
 .interviewing{
-    color: #1D4ED8;
-    background-color: #DBEAFE;
+    color: var(--color-status-interview);
+    background-color: var(--color-status-interview-bg);
 }
 
 .offer{
-    color: #15803D;
-    background-color: #DCFCE7;
+    color: var(--color-status-offer);
+    background-color: var(--color-status-offer-bg);
 }
 
 .rejected{
-    color: #B91C1C;
-    background-color: #FEE2E2;
+    color: var(--color-status-rejected);
+    background-color: var(--color-status-rejected-bg);
+}
+
+
+@media (min-width: 768px) {
+    .badge{
+        display: inline-block;
+        padding: .5em 1em;
+        min-width: 100px;
+        text-align: center;
+    }
 }

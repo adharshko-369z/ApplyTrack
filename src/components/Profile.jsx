@@ -1,32 +1,15 @@
-import { useContext, useState, useRef, useEffect } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 import { useAuthForm } from "../hooks/useAuthForm"
+import { useClickOutside } from "../hooks/useClickOutside"
 import profilePlaceholder from "../assets/profile-placeholder.svg"
 
 export default function Profile() {
     const { user } = useContext(AuthContext)
     const [isOpen, setIsOpen] = useState(false)
     const { handleLogout } = useAuthForm()
-    const profileRef = useRef(null)
-    
-
-    // close dropdown on outside click
-    useEffect(() => {
-        function handleClickOutside(e) {
-            if (profileRef.current && !profileRef.current.contains(e.target)) {
-                setIsOpen(false)
-            }
-        }
-        document.addEventListener("mousedown", handleClickOutside)
-        return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [])
-
-    function handleSignOut(){
-        handleLogout()
-        return setIsOpen(false)
-    }
-   
+    const profileRef = useClickOutside(() => setIsOpen(false))
 
     const fallbackLetter = user?.email?.charAt(0).toUpperCase()
 
@@ -53,7 +36,7 @@ export default function Profile() {
                     )}
                     <p>{user?.email}</p>
                     {user ? (
-                        <button onClick={handleSignOut}>Sign out</button>
+                        <button onClick={() => handleLogout() && setIsOpen(false)}>Sign out</button>
                     ) : (
                         <Link className="profile-nav" to="/login" onClick={() => setIsOpen(false)}>Login</Link>
                     )}

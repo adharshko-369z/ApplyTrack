@@ -1,0 +1,171 @@
+.applications-toolbar-wrapper{
+    background-color: var(--color-surface);
+}
+
+.applications-toolbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 1rem;
+}
+
+.filter > .filter-btn{
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+}
+
+.filter > .filter-card{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: .5rem ;
+    margin-top: .5rem;
+    margin-right: .5rem;
+}
+
+.filter-card > .filter-option {
+  min-width: 150px;
+  width: 100%;
+  border-radius: 0;
+  background-color: var(--color-surface);
+}
+
+
+.filter-card > .filter-active{
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.add-btn{
+  margin: .5rem 0;
+}
+
+/* @media (max-width: 540px) {
+  .applications-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .applications-toolbar input[type="text"] {
+    order: 1;
+    flex: 1 1 100%;
+  }
+
+  .filter {
+    order: 2;
+    flex: 1;
+  }
+
+  .add-btn {
+    order: 3;
+    flex: 1;
+  }
+
+  .filter > .filter-btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 540px) {
+  .applications-toolbar {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .applications-toolbar input[type="text"] {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .applications-toolbar > .add-btn,
+  .filter > .filter-btn{
+    padding: .5em 1em;  
+  }
+} */
+
+@media (max-width: 540px) {
+  .applications-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .applications-toolbar input[type="text"] {
+    order: 1;
+    flex: 1 1 100%;
+  }
+
+  .filter {
+    order: 2;
+    flex: 1;
+  }
+
+  .add-btn {
+    order: 3;
+    flex: 1;
+  }
+
+  .filter > .filter-btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 540px) and (max-width: 639.98px) {
+  .applications-toolbar {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .applications-toolbar input[type="text"] {
+    order: 1;
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .add-btn {
+    order: 2;
+    flex: 0 0 auto;
+  }
+
+  .filter {
+    order: 3;
+    flex: 0 0 auto;
+  }
+
+  .applications-toolbar > .add-btn,
+  .filter > .filter-btn{
+    padding: .5em 1em;
+    width: auto;
+  }
+}
+
+@media (min-width: 640px) {
+  .applications-toolbar {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .filter {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  .applications-toolbar input[type="text"] {
+    order: 2;
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .add-btn {
+    order: 3;
+    flex: 0 0 auto;
+  }
+
+  .applications-toolbar > .add-btn,
+  .filter > .filter-btn{
+    padding: .5em 1em;
+    width: auto;
+  }
+}

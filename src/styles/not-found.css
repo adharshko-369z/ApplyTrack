@@ -14,12 +14,12 @@
 }
 
 .notfound-page > h1{
-    color: #2E5EAA;
+    color: var(--color-primary);
 }
 
 .notfound-page > p{
     text-align: center;
-    color: #6B7280;
+    color: var(--color-text-muted);
     font-weight: 600;
 }
 
@@ -27,17 +27,11 @@
     font-weight: 500;
 }
 
-.notfound-page > .route-links-to-btns{
-    font-family: sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: .5em;
-    margin: 2em 0;
-    width: 100%;
-    background-color: #2E5EAA;
-    color: #FFFFFF;
-    border: 1px solid #2E5EAA;
-    border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
+
+@media (min-width: 768px) {
+    .notfound-page {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

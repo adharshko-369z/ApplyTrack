@@ -1,10 +1,22 @@
-header{
+.header-wrapper{
+    background-color: var(--color-surface);
+}
+
+.header{
     display: flex;
     align-items: center;
     gap: .5rem;
-    background-color: #FFFFFF;
     padding: .5rem;
     width: 100%;
+}
+
+.header-nav{
+    display: none;
+    margin-left: 2rem;
+}
+
+.header-nav > .nav-link{
+    margin-left: 1rem;
 }
 
 .logo{
@@ -18,18 +30,45 @@ header{
 }
 
 /* sub-nav */
+.sub-nav-wrapper{
+    background-color: var(--color-surface);
+}
+
 .sub-nav{
     display: flex;
-    background-color: #FFFFFF;
-    padding: .5rem 1rem;
+    padding: 1rem;
+    padding-top: 0;
     gap: 1rem;
 }
 
 .nav-link{
     text-decoration: none;
-    color: #1C2126;
+    color: inherit;
 }
 
 .active{
     text-decoration: underline;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+@media (min-width: 540px) {
+
+    .header-nav{
+        display: block;
+    }
+    
+    .sub-nav-wrapper{
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .header{
+        padding: 1rem;
+    }
+
+    .sub-nav{
+        padding-top: 0;
+    }
 }

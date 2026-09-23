@@ -1,3 +1,52 @@
+
+:root {
+  /* brand */
+  --color-primary: #2E5EAA;
+  --color-primary-hover: #254C87;
+
+  /* text */
+  --color-text: #1C2126;
+  --color-text-heading: #111827;
+  --color-text-secondary: #374151;
+  --color-text-secondary-2: #4b5563;
+  --color-text-muted: #6B7280;
+  --color-text-faint: #9ca3af;
+
+  /* borders / surfaces */
+  --color-border: #E3E6EA;
+  --color-border-light: #e5e7eb;
+  --color-bg: #F7F8FA;
+  --color-surface: #FFFFFF;
+
+    /* overlay */
+  --color-overlay: rgba(0, 0, 0, 0.5);
+
+  /* loading / skeleton */
+  --color-skeleton-highlight: #f3f4f6;
+  --color-spinner-accent: #3b4b8c;
+
+  /* status: no response */
+  --color-status-none: #475569;
+  --color-status-none-bg: #F1F5F9;
+
+  /* status: interviewing */
+  --color-status-interview: #1D4ED8;
+  --color-status-interview-bg: #DBEAFE;
+
+  /* status: offer */
+  --color-status-offer: #15803D;
+  --color-status-offer-bg: #DCFCE7;
+
+  /* status: rejected */
+  --color-status-rejected: #B91C1C;
+  --color-status-rejected-bg: #FEE2E2;
+
+  /* feedback */
+  --color-error: red;
+  --color-danger: #DC2626;
+}
+
+
 *{
     box-sizing: border-box;
 }
@@ -5,8 +54,8 @@
 body{
     margin: 0;
     font-family: sans-serif;
-    background-color: #F7F8FA;
-    color: #1C2126;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 button{
@@ -22,8 +71,27 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #2E5EAA;
+  outline: 2px solid  var(--color-primary);
   outline-offset: 2px;
+}
+
+.route-links-to-btns{
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: .5em;
+    margin: 2em 0;
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.route-links-to-btns:hover,
+.route-links-to-btns:active{
+    background-color: var(--color-primary-hover);
 }
 
 .applications-error{
@@ -31,30 +99,36 @@ textarea:focus-visible {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 9rem;
+    margin-top: 8rem;
     gap: 1rem;
 }
 
 .applications-error > p{
     text-align: center;
-    color: #6B7280;
+    color: var(--color-text-muted);
     font-weight: 500;
 }
 
-.applications-error > button{
-    width: 95%;
-    font-family: sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: #2E5EAA;
-    color: #FFFFFF;
-    border: 1px solid #2E5EAA;
-    border-radius: 4px;
-}
-
-
 .field-error{
-    color: red;
+    color: var(--color-error);
     font-weight: 500;
     margin: 0;
 }
+
+@media (min-width: 768px) {
+    .page-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .route-links-to-btns{
+        width: fit-content;
+        padding: .5rem 2rem;
+        margin: 0;
+    }
+}
+
+
+
+

@@ -1,0 +1,30 @@
+.form-field{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: .5rem;
+  margin: .25rem 0;
+}
+
+#status{
+  padding: .5rem;
+  font-size: 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border); 
+}
+
+textarea{
+  font-family: inherit;
+  border: 1px solid var(--color-border); 
+  font-size: 1rem;
+  padding: .5em;
+}
+
+.form-actions{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+

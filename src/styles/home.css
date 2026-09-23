@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     padding: .5rem;
-    margin:  5rem 0;
+    margin:  5rem auto;
     gap: .5rem;
 }
 
@@ -17,22 +17,14 @@
     width: 80%;
 }
 
-.home-page > .route-links-to-btns{
-    font-family: sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: .5em;
-    margin: 2em 0;
-    width: 100%;
-    background-color: #2E5EAA;
-    color: #FFFFFF;
-    border: 1px solid #2E5EAA;
-    border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
+@media (min-width: 540px) {
+    .home-page{
+        padding: 1rem;
+    }
 }
 
-.home-page > .route-links-to-btns:hover,
-.home-page > .route-links-to-btns:active{
-    background-color: #254C87;
+@media (min-width: 768px) {
+    .home-page {
+        max-width: 500px;
+    }
 }

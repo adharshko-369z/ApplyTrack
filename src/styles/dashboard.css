@@ -1,8 +1,7 @@
 .dashboard-page{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch; 
 }
 
 .dashboard-main-analysis{
@@ -11,7 +10,7 @@
     justify-content: start;
     flex-wrap: wrap;
     gap: .5rem;
-    background-color: #FFFFFF;
+    background-color: var(--color-surface);
     border-radius: 12px;
     padding: 1rem;
     margin: 1rem .5rem .5rem;
@@ -26,24 +25,21 @@
     font-size: 1.125rem;
 }
 
-.dashboard-page > .status-cards{
+.dashboard-page > .status-cards {
     margin: 1rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
 
 .status-card{
-    min-width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: .5rem;
-    margin: .5rem;
     border-radius: 12px;
-    background-color: #FFFFFF;
-     gap: .5em;
+    background-color: var(--color-surface);
+    gap: .5em;
 }
 
 .status-card > p{
@@ -53,11 +49,11 @@
 .status-link{
     margin: .5em 0;
     font-size: .875rem;
-    color: #1C2126;
+    color: var(--color-text);
 }
 
 .disabled{
-    color: #9ca3af;
+    color: var(--color-text-faint);
     text-decoration: underline;
 }
 
@@ -66,26 +62,26 @@
     font-weight: bold;
 }
 
-.no_response-card{
-    color: #475569;
+.no-response-card{
+    color: var(--color-status-none);
 }
 
 .interviewing-card{
-    color: #1D4ED8;
+    color: var(--color-status-interview);
 }
 
 .offer-card{
-    color: #15803D;
+    color: var(--color-status-offer);
 }
 
 .rejected-card{
-    color: #B91C1C;
+    color: var(--color-status-rejected);
 }
 
 /* dashboard when 0 applications */
 .dashboard-empty{
     min-width: 100%;
-    margin: 9rem;
+    margin: 9rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,7 +91,7 @@
 
 .dashboard-empty > p{
     margin: 0;
-    color: #6B7280;
+    color: var(--color-text-muted);
 }
 
 p.dashboard-empty-title{
@@ -107,17 +103,20 @@ p.dashboard-empty-subtext{
     font-weight: 500;
 }
 
-.dashboard-empty-cta{
-    font-family: sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: .5em;
-    margin: 2em 0;
-    width: 100%;
-    background-color: #2E5EAA;
-    color: #FFFFFF;
-    border: 1px solid #2E5EAA;
-    border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
+
+@media (min-width: 768px) {
+    .dashboard-empty {
+        margin: 4rem auto;   
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .dashboard-page > .status-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .dashboard-main-analysis > p{
+        padding: 0 1em;
+    }
 }

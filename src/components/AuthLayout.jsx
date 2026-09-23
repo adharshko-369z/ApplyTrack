@@ -22,21 +22,23 @@ export default function AuthLayout() {
 
   return (
    <>
-    <nav className='sub-nav'>
-      <NavLink 
-        to="/dashboard" 
-        className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
-        end
-      >
-        {({ isActive }) => <span aria-current={isActive ? "page" : undefined}>Dashboard</span>}
-      </NavLink>
-      <NavLink 
-        to="/applications"
-        className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} 
-      >
-        {({ isActive }) => <span aria-current={isActive ? "page" : undefined}>Applications</span>}
-      </NavLink>
-    </nav>
+    <div className='sub-nav-wrapper'>
+      <nav className='sub-nav page-container'>
+        <NavLink 
+          to="/dashboard" 
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+          end
+        >
+          {({ isActive }) => <span aria-current={isActive ? "page" : undefined}>Dashboard</span>}
+        </NavLink>
+        <NavLink 
+          to="/applications"
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} 
+        >
+          {({ isActive }) => <span aria-current={isActive ? "page" : undefined}>Applications</span>}
+        </NavLink>
+      </nav>
+    </div>
     <Outlet />
    </> 
 )

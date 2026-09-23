@@ -1,5 +1,5 @@
 .skeleton-line {
-  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background: linear-gradient(90deg, var(--color-border-light) 25%, var(--color-skeleton-highlight) 50%, var(--color-border-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 4px;
@@ -19,8 +19,8 @@
 .skeleton-application{
     display: flex;
     justify-content: space-between;
-    background: #fff;
-    border: 1px solid #e5e7eb;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
     border-radius: 10px;
     padding: .5rem;
     cursor: pointer;
@@ -36,18 +36,32 @@
   justify-content: center;
   height: 100vh;
   gap: 12px;
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 .spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #e5e7eb;
-  border-top-color: #3b4b8c;
+  border: 3px solid var(--color-border-light);
+  border-top-color: var(--color-spinner-accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+@media (min-width: 768px) {
+    .skeleton-application{
+       justify-content: flex-start;
+       gap: 1rem;
+       padding: 1rem;
+       margin: 1rem 0;
+    }
+
+    .skeleton-label{
+      width: 120px;
+      margin: 0;
+    }
 }

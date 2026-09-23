@@ -18,14 +18,14 @@ export default function Dashboard() {
   const total = applications.length
 
   return (
-    <section className="dashboard-page">
+    <section className="dashboard-page page-container">
       { loading ?(
         <DashboardSkeleton />
       )
       :error ? (
           <div className="applications-error" role="alert">
             <p>{error}</p>
-            <button onClick={() => window.location.reload()}>Retry</button>
+            <button className="route-links-to-btns" onClick={() => window.location.reload()}>Retry</button>
           </div>
       ) 
       : total === 0 ?
@@ -35,7 +35,7 @@ export default function Dashboard() {
           <p className="dashboard-empty-subtext">
             Start tracking your job search by adding your first application.
           </p>
-          <Link to="/applications?add=true" className="dashboard-empty-cta">
+          <Link to="/applications?add=true" className="route-links-to-btns">
             Add your first application
           </Link>
         </div>

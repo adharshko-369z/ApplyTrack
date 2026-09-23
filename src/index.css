@@ -3,8 +3,13 @@
 @import url("./styles/home.css");
 @import url("./styles/auth.css");
 @import url("./styles/profile.css");
-@import url("./styles/applications.css");
 @import url("./styles/badge.css");
 @import url("./styles/dashboard.css");
 @import url("./styles/loading.css");
 @import url("./styles/not-found.css");
+
+/* application */
+@import url("./styles/application/toolbar.css");
+@import url("./styles/application/list.css");
+@import url("./styles/application/modal.css");
+@import url("./styles/application/form.css");
