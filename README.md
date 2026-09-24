@@ -52,7 +52,7 @@ Add screenshots of the main application screens here.
 
 ## Live Demo
 
-[View the live application](YOUR_DEPLOYED_APP_URL)
+[View the live application](https://applytrack-ko.netlify.app/)
 
 ## Getting Started
 
