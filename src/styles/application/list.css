@@ -151,3 +151,17 @@ p.applications-empty-subtext{
   }
 }
 
+@media (min-width: 768px) {
+  .primary-applicaton-info p:first-child,
+  .application-role,
+  .application-location,
+  .application-date {
+    min-width: 140px;
+    text-align: start;
+  }
+
+  .application-date {
+    text-align: center;
+  }
+
+}
