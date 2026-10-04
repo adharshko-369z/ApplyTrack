@@ -51,6 +51,11 @@
   margin-bottom: 0;
 }
 
+.modal-content > a{
+  color: var(--color-primary);
+  margin: 1rem 0 0;
+}
+
 .modal-actions button {
   padding: 6px 14px;
   border-radius: 6px;
