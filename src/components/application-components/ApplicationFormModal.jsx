@@ -13,6 +13,7 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
         status: application?.status || "no-response",
         dateApplied: application?.dateApplied || "",
         location: application?.location || "",
+        platform: application?.platform || "",
         jobUrl: application?.jobUrl || "",
         notes: application?.notes || "",
     })
@@ -28,6 +29,8 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
             company: formData.company.trim(),
             role: formData.role.trim(),
             location: formData.location.trim(),
+            JdSource: formData.JdSource.trim(),
+            appliedVia: formData.appliedVia.trim()
         }
 
         const newErrors = {}
@@ -35,6 +38,8 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
         if (!cleaned.role) newErrors.role = "Role is required"
         if (!cleaned.location) newErrors.location = "Location is required"
         if (!cleaned.dateApplied) newErrors.dateApplied = "Date applied is required"
+        if (!cleaned.JdSource) newErrors.JdSource = "Job desc Source is required"
+        if (!cleaned.appliedVia) newErrors.appliedVia = "Applied via is required"
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors)
@@ -145,6 +150,44 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
                                 {errors.location}
                             </p>
                         )}
+                    </div>
+
+                    <div className="form-field">
+                        <label htmlFor="JdSource">JD found on</label>
+                        <input
+                            id="JdSource"
+                            type="text"
+                            value={formData.JdSource}
+                            onChange={(e) => handleChange("JdSource", e.target.value)}
+                            placeholder="e.g. Linkedin, Naukri"
+                            required
+                            aria-invalid={errors.JdSource ? "true" : "false"}
+                            aria-describedby={errors.JdSource ? "role-error" : undefined}
+                        />
+                        {errors?.JdSource && (
+                            <p id="JdSource-error" className="field-error" role="alert">
+                                {errors.JdSource}
+                            </p>
+                        )}  
+                    </div>
+
+                    <div className="form-field">
+                        <label htmlFor="appliedVia">Applied Via</label>
+                        <input
+                            id="appliedVia"
+                            type="text"
+                            value={formData.appliedVia}
+                            onChange={(e) => handleChange("appliedVia", e.target.value)}
+                            placeholder="e.g. Employer site, Same platform"
+                            required
+                            aria-invalid={errors.appliedVia ? "true" : "false"}
+                            aria-describedby={errors.appliedVia ? "role-error" : undefined}
+                        />
+                        {errors?.appliedVia && (
+                            <p id="appliedVia-error" className="field-error" role="alert">
+                                {errors.appliedVia}
+                            </p>
+                        )}  
                     </div>
 
                     <div className="form-field">

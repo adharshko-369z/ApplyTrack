@@ -33,6 +33,8 @@ export default function ApplicationReadModal({ application, onClose, onEdit, onD
                 <p>{`Role: ${application.role}`}</p>
                 <p>{`Location: ${application.location}`}</p>
                 <p>{`Applied Date: ${application.dateApplied}`}</p>
+                <p>{`JD Source: ${application.JdSource}`}</p>
+                <p>{`Applied Via: ${application.appliedVia}`}</p>
                 {application.jobUrl && (
                     <a href={application.jobUrl} target="_blank" rel="noreferrer">View job posting</a>
                 )}
