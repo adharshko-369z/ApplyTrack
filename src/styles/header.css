@@ -73,6 +73,12 @@
     }
 
     .header-nav{
-        margin-left: 8.5rem;
+        margin-left: 4.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header-nav{
+        margin-left: 5.5rem;
     }
 }

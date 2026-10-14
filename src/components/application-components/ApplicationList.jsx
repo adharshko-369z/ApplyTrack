@@ -22,12 +22,12 @@ export default function ApplicationList({ applications, highlightMatch, searchTe
                     onClick={() => onCardClick(application)}
                     aria-label={`${application.company}, ${application.role}, status: ${statusMeta?.label}, applied ${application.dateApplied}`}
             >
-                <div className="primary-applicaton-info">
+                <div className="primary-application-info">
                     <p>{highlightMatch(application.company, searchTerm)}</p>
                     <p className="application-role">{highlightMatch(application.role, searchTerm)}</p>
                     <p className="application-location">{highlightMatch(application.location, searchTerm)}</p>
                 </div>
-                <div className="secondary-applicaton-info">
+                <div className="secondary-application-info">
                     <Badge variant={statusMeta?.value}>{statusMeta?.label}</Badge>
                     <p className="application-date">{application.dateApplied}</p>
                 </div>
