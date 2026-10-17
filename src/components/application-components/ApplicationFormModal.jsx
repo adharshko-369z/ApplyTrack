@@ -13,7 +13,8 @@ export default function ApplicationFormModal({ application, mode, onCancel, onSa
         status: application?.status || "no-response",
         dateApplied: application?.dateApplied || "",
         location: application?.location || "",
-        platform: application?.platform || "",
+        JdSource: application?.JdSource || "",
+        appliedVia: application?.appliedVia || "",
         jobUrl: application?.jobUrl || "",
         notes: application?.notes || "",
     })
