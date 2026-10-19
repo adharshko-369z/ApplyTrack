@@ -32,7 +32,7 @@ export function useApplications(user) {
       console.error(err)
       setError("Couldn't load your applications. Check your connection and try again.")
     } finally {
-      setLoading(false)
+      setLoading(true)
     }
   }
 
